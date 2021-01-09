@@ -11,12 +11,14 @@ class Restaurant {
         std::vector<Stok> _menuStok;
         std::vector<Invoice> _invoice;
 
+        Stok findMenu(Pesanan);
+
     public:
         std::vector<Stok> getMenu();
         void addMenu(Menu, std::uint32_t);
-        void deleteMenu(Menu);
-        void editMenu(Menu, Menu);
-        void editMenu(Menu, Menu, std::uint32_t);
+        void deleteMenu(Stok);
+        void editMenu(Stok, Menu);
+        void editMenu(Stok, Menu, std::uint32_t);
 
         std::vector<Invoice> getInvoice();
         void pesan(Invoice);

@@ -7,11 +7,12 @@ std::vector<Stok> Restaurant::getMenu()
 
 void Restaurant::addMenu(Menu menu, std::uint32_t stok)
 {
-    // Stok stokObj;
-    // this->_menuStok.push_back(stokObj);
+    Stok stokObj(menu);
+    stokObj.setJumlah(stok);
+    this->_menuStok.push_back(stokObj);
 }
 
-void Restaurant::deleteMenu(Menu menu)
+void Restaurant::deleteMenu(Stok menu)
 {
     for (auto iter = this->_menuStok.begin() ; iter != this->_menuStok.end();)
     {
@@ -24,7 +25,7 @@ void Restaurant::deleteMenu(Menu menu)
     }
 }
 
-void Restaurant::editMenu(Menu menu, Menu menuBaru)
+void Restaurant::editMenu(Stok menu, Menu menuBaru)
 {
     for (auto item : this->_menuStok)
     {
@@ -36,7 +37,7 @@ void Restaurant::editMenu(Menu menu, Menu menuBaru)
     }
 }
 
-void Restaurant::editMenu(Menu menu, Menu menuBaru, std::uint32_t stok)
+void Restaurant::editMenu(Stok menu, Menu menuBaru, std::uint32_t stok)
 {
     for (auto iter = this->_menuStok.begin() ; iter != this->_menuStok.end();)
     {
@@ -58,7 +59,33 @@ std::vector<Invoice> Restaurant::getInvoice()
     return this->_invoice;
 }
 
+Stok Restaurant::findMenu(Pesanan pesanan)
+{
+    for (auto item : this->_menuStok)
+    {
+        if (item == pesanan) { return item; }
+    }
+
+    Menu empty;
+    Stok emptyItem(empty);
+    return emptyItem;
+}
+
 void Restaurant::pesan(Invoice pesanan)
 {
+    std::vector<Pesanan> pesananList = pesanan.getDetailPesanan();
+    for (auto item : pesananList)
+    {
+        Menu menuDipesan;
+        menuDipesan.setDiskon(item.getDiskon());
+        menuDipesan.setHarga(item.getHarga());
+        menuDipesan.setNama(item.getNama());
+
+        Stok menu = this->findMenu(item);
+        if (!menu.getNama().empty())
+        {
+            this->editMenu(menu, menuDipesan, menu.getJumlah()-item.getJumlah());
+        }
+    }
     this->_invoice.push_back(pesanan);
 }

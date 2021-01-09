@@ -39,6 +39,11 @@ target_sources(${PROJECT_NAME}
         src/invoice.cpp
         src/pesanan.cpp
         src/stok.cpp
+
+        src/cli/mainMenu.cpp
+        src/cli/menu.cpp
+        src/cli/invoice.cpp
+        src/cli/pesanan.cpp
 )
 
 target_include_directories(${PROJECT_NAME}

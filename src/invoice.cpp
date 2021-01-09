@@ -30,7 +30,7 @@ void Invoice::tambahMenu(Menu menu, std::uint32_t jumlah, const char* catatan)
     this->tambahMenu(menu, jumlah, catatanStd);
 }
 
-void Invoice::hapusMenu(Menu menu)
+void Invoice::hapusMenu(Pesanan menu)
 {
     for (auto iter = this->_pesanan.begin() ; iter != this->_pesanan.end();)
     {
@@ -43,7 +43,7 @@ void Invoice::hapusMenu(Menu menu)
     }
 }
 
-void Invoice::editMenu(Menu menu, std::uint32_t jumlah, std::string catatan)
+void Invoice::editMenu(Pesanan menu, std::uint32_t jumlah, std::string catatan)
 {
     for (auto item : this->_pesanan)
     {
@@ -56,7 +56,7 @@ void Invoice::editMenu(Menu menu, std::uint32_t jumlah, std::string catatan)
     }
 }
 
-void Invoice::editMenu(Menu menu, std::uint32_t jumlah, const char* catatan)
+void Invoice::editMenu(Pesanan menu, std::uint32_t jumlah, const char* catatan)
 {
     std::string catatanStd(catatan);
     this->editMenu(menu, jumlah, catatanStd);

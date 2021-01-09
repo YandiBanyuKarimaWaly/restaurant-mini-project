@@ -5,9 +5,24 @@ std::string Pesanan::getCatatan()
     return this->_catatan;
 }
 
+std::string Pesanan::getNama()
+{
+    return Menu::getNama();
+}
+
 std::uint32_t Pesanan::getJumlah()
 {
     return this->_jumlah;
+}
+
+std::uint32_t Pesanan::getHarga()
+{
+    return Menu::getHarga();
+}
+
+std::uint32_t Pesanan::getDiskon()
+{
+    return Menu::getDiskon();
 }
 
 void Pesanan::setCatatan(std::string catatan)
@@ -26,7 +41,7 @@ void Pesanan::setJumlah(std::uint32_t jumlah)
     this->_jumlah = jumlah;
 }
 
-bool Pesanan::operator==(Menu menuCmp)
+bool Pesanan::operator==(Pesanan menuCmp)
 {
     return (this->getNama().compare(menuCmp.getNama()) == 0) ? true : false;
 }

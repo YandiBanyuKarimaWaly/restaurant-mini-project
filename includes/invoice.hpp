@@ -9,7 +9,7 @@
 
 class Invoice {
     private:
-        const std::time_t _timestamp;
+        std::time_t _timestamp;
         std::uint32_t _diskon;
         std::vector<Pesanan> _pesanan;
 
@@ -21,9 +21,9 @@ class Invoice {
 
         void tambahMenu(Menu, std::uint32_t, std::string);
         void tambahMenu(Menu, std::uint32_t, const char*);
-        void hapusMenu(Menu);
-        void editMenu(Menu, std::uint32_t, std::string);
-        void editMenu(Menu, std::uint32_t, const char*);
+        void hapusMenu(Pesanan);
+        void editMenu(Pesanan, std::uint32_t, std::string);
+        void editMenu(Pesanan, std::uint32_t, const char*);
         void setDiskon(std::uint32_t);
 };
 

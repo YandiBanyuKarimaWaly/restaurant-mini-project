@@ -11,13 +11,16 @@ class Pesanan : protected Menu {
     public:
         Pesanan(Menu menu) : Menu(menu) {}
         std::string getCatatan();
+        std::string getNama();
         std::uint32_t getJumlah();
+        std::uint32_t getHarga();
+        std::uint32_t getDiskon();
 
         void setCatatan(std::string);
         void setCatatan(const char*);
         void setJumlah(std::uint32_t);
 
-        bool operator == (Menu);
+        bool operator == (Pesanan);
 };
 
 #endif
